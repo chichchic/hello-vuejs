@@ -1,0 +1,1 @@
+여러 entry point에서 사용되는 공용 component, directive, mixin을 관리하는 폴더

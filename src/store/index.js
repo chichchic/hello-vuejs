@@ -1,15 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import modules from './modules'
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+const commonStore = {
   state: {
+    name: 'common'
   },
   mutations: {
   },
   actions: {
   },
-  modules: {
-  }
-})
+}
+
+const store = Promise.all(modules).then(modules =>
+  new Vuex.Store({
+    ...commonStore,
+    modules: modules.reduce((acc, { name, module }) =>
+    ({...acc, [name]: module})
+    , {})
+  })
+)
+
+export default store

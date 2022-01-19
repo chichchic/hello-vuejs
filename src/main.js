@@ -16,9 +16,9 @@ import VueYoutube from 'vue-youtube'
 import VueScrollPicker from 'vue-scroll-picker'
 
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import App from '@/App.vue'
+import router from '@/router'
+import store from '@/store'
 
 Vue.component('file-upload', VueUploadComponent)
 Vue.component(VueCountdown.name, VueCountdown)
@@ -28,8 +28,16 @@ Vue.use(VueAnalytics, {
   router,
 })
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const init = async () => {
+  const routerModule = await import('@/router')
+  const router = await routerModule.default
+  const storeModule = await import('@/store')
+  const store = await storeModule.default
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+}
+
+init()
