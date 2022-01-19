@@ -17,25 +17,22 @@ import VueScrollPicker from 'vue-scroll-picker'
 
 import Vue from 'vue'
 import App from '@/App.vue'
-import router from '@/router'
-import store from '@/store'
 
 Vue.component('file-upload', VueUploadComponent)
 Vue.component(VueCountdown.name, VueCountdown)
 Vue.use(VueScrollPicker)
-Vue.use(VueAnalytics, {
-  id: 'UA-159915865-1',
-  router,
-})
 
 const init = async () => {
   const routerModule = await import('@/router')
   const router = await routerModule.default
   const storeModule = await import('@/store')
   const store = await storeModule.default
+  const i18nModule = await import('@/locales')
+  const i18n = await i18nModule.default
   new Vue({
     router,
     store,
+    i18n,
     render: h => h(App)
   }).$mount('#app')
 }

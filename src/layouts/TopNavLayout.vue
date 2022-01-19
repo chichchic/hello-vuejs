@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <span v-for="({ name, link }, index) in nav" :key="index">
+        <router-link :to="link">{{ name }}</router-link>
+        <span v-if="index !== nav.length - 1" class="seperator">|</span>
+      </span>
     </div>
     <slot />
   </div>
@@ -10,19 +12,29 @@
 <script>
 export default {
   name: "TopNavLayout",
+  data: () => ({
+    nav: [
+      { name: "Home", link: "/" },
+      { name: "About", link: "/about" },
+      { name: "I18n", link: "/i18n" },
+    ],
+  }),
 };
 </script>
 <style lang="scss" scoped>
 #nav {
-  padding: 30px;
+  padding: 3rem;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: $default-text-color;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: $primary-text-color;
     }
+  }
+  .seperator {
+    margin: 0 1px;
   }
 }
 </style>

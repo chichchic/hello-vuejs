@@ -7,7 +7,8 @@ const generateRoute = path => {
 }
 const layoutMeta = {
   About: 'TopNavLayout',
-  Home: 'TopNavLayout'
+  Home: 'TopNavLayout',
+  I18n: 'TopNavLayout',
 }
 
 export default pages.map(async path => {
