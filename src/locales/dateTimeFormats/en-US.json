@@ -1,0 +1,11 @@
+{
+  "Date": {
+    "year": "numeric",
+    "month": "short",
+    "day": "numeric"
+  },
+  "Time": {
+    "hour": "2-digit",
+    "minute": "2-digit"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "Date": {
+    "dateStyle": "short",
+    "calendar": "gregory",
+    "numberingSystem": "latn"
+  },
+  "Time": {
+    "hour": "2-digit",
+    "minute": "2-digit",
+    "numberingSystem": "latn"
+  }
+}
