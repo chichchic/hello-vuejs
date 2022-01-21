@@ -3,10 +3,10 @@
     <section class="controlbox">
       <button
         :class="{ selected: locale === lang }"
-        v-for="lang in locales"
+        v-for="{ lang, langName } in languages"
         @click="changeLocale(lang)"
       >
-        {{ lang }}
+        {{ langName }}
       </button>
     </section>
     <p>{{ $t("hello") }}</p>
@@ -16,8 +16,15 @@
 export default {
   name: "I18n",
   computed: {
-    locales() {
-      return Object.keys(this.$i18n.messages);
+    languages() {
+      const used = new Set();
+      return this.$localeInfo.reduce((acc, { lang, langName }) => {
+        if (!used.has(lang)) {
+          used.add(lang);
+          acc.push({ lang, langName });
+        }
+        return acc;
+      }, []);
     },
     locale() {
       return this.$i18n.locale;
@@ -35,7 +42,7 @@ export default {
   .controlbox {
     margin: 3rem 0;
     button {
-      width: 3rem;
+      width: 7rem;
       &:hover {
         background-color: rgba($primary-text-color, 0.5);
       }
