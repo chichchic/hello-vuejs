@@ -12,13 +12,19 @@
 <script>
 export default {
   name: "TopNavLayout",
-  data: () => ({
-    nav: [
-      { name: "Home", link: "/" },
-      { name: "About", link: "/about" },
-      { name: "I18n", link: "/i18n" },
-    ],
-  }),
+  computed: {
+    nav() {
+      return this.$pages.map((path) => {
+        const shortcut = path[0].toLowerCase();
+        return {
+          name: shortcut,
+          link: shortcut.startsWith("home")
+            ? "/"
+            : path.map((p) => p.toLowerCase()).join("/"),
+        };
+      });
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

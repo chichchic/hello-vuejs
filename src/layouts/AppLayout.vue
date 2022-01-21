@@ -4,7 +4,7 @@
   </component>
 </template>
 <script>
-const defaultLayout = "AppLayoutDefault";
+const defaultLayout = "TopNavLayout";
 export default {
   name: "AppLayout",
   computed: {

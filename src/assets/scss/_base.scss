@@ -23,3 +23,19 @@ button {
     outline: none;
   }
 }
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+p {
+  color: $primary-text-color;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.control {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}

@@ -1,15 +1,15 @@
 // NOTE: router auto creator from view folder
+
+import Vue from 'vue';
+
 const importAll = r => r.keys().map(key => key.slice(2).replace('.vue', '').split('/'))
 const pages = importAll(require.context('@/views', true, /\.vue$/));
+Vue.prototype.$pages = pages
 const generateRoute = path => {
   const shortcut = path[0].toLowerCase()
   return shortcut.startsWith('home') ? '/' : path.map(p => p.toLowerCase()).join('/')
 }
-const layoutMeta = {
-  About: 'TopNavLayout',
-  Home: 'TopNavLayout',
-  I18n: 'TopNavLayout',
-}
+const layoutMeta = {}
 
 export default pages.map(async path => {
   const { default: component } = await import(`@/views/${path.join('/')}`)
