@@ -29,21 +29,19 @@
       </p>
       <p>
         Time:
-        <span :class="{ rtl: isArabic }" :dir="isArabic ? 'rtl' : 'ltr'"
+        <span :class="{ rtl: isArabic }" :dir="attrDir"
           >{{ $d(new Date(), "Time", curLocale) }}
         </span>
       </p>
       <p class="date-time">
         DateTime:
         <span :class="{ arabic: isArabic }">
-          <span :dir="isArabic ? 'rtl' : 'ltr'">
+          <span :dir="attrDir">
             {{ $d(new Date(), "Date", curLocale) }}
           </span>
           <span v-if="!isArabic">,&nbsp;</span>
           <span v-else>&nbsp;</span>
-          <span :dir="isArabic ? 'rtl' : 'ltr'">{{
-            $d(new Date(), "Time", curLocale)
-          }}</span>
+          <span :dir="attrDir">{{ $d(new Date(), "Time", curLocale) }}</span>
         </span>
       </p>
     </section>
@@ -74,6 +72,9 @@ export default {
     },
     isArabic() {
       return this.curLocale.slice(0, 2) === "ar";
+    },
+    attrDir() {
+      return this.isArabic ? "rtl" : "ltr";
     },
   },
   data: () => ({
