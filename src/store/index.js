@@ -5,7 +5,6 @@ Vue.use(Vuex)
 
 const commonStore = {
   state: {
-    name: 'common'
   },
   mutations: {
   },
