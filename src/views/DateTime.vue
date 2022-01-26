@@ -5,7 +5,7 @@
       <section class="control">
         <button
           :class="{ selected: locale === curLocale }"
-          v-for="{ locale, localeName } in locales"
+          v-for="{ locale, localeName } in $locales"
           @click="changeLocale(locale)"
         >
           {{ localeName }}
@@ -38,12 +38,6 @@
 export default {
   name: "DateTime",
   computed: {
-    locales() {
-      return this.$localeInfo.reduce((acc, { locale, localeName }) => {
-        acc.push({ locale, localeName });
-        return acc;
-      }, []);
-    },
     isArabic() {
       return this.curLocale.slice(0, 2) === "ar";
     },

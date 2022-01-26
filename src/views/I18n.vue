@@ -20,14 +20,10 @@ export default {
   name: "I18n",
   computed: {
     languages() {
-      const used = new Set();
-      return this.$localeInfo.reduce((acc, { lang, langName }) => {
-        if (!used.has(lang)) {
-          used.add(lang);
-          acc.push({ lang, langName });
-        }
-        return acc;
-      }, []);
+      return Object.keys(this.$languages).map((key) => ({
+        lang: key,
+        langName: this.$languages[key],
+      }));
     },
     locale() {
       return this.$i18n.locale;
