@@ -1,0 +1,10 @@
+{
+  "currency": {
+    "style": "currency",
+    "currency": "KRW",
+    "currencyDisplay": "symbol"
+  },
+  "number": {
+    "maximumSignificantDigits": 3
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "currency": {
+    "style": "currency",
+    "currency": "USD",
+    "currencyDisplay": "symbol"
+  },
+  "number": {
+    "maximumSignificantDigits": 3
+  }
+}

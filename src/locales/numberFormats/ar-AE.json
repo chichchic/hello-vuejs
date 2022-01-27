@@ -1,0 +1,10 @@
+{
+  "currency": {
+    "style": "currency",
+    "currency": "AED",
+    "currencyDisplay": "symbol"
+  },
+  "number": {
+    "maximumSignificantDigits": 3
+  }
+}

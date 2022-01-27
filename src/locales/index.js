@@ -30,12 +30,22 @@ const dateTimeFormatsPromises = locales.map(async ({ locale }) => {
   const { default: file } = await import(`@/locales/dateTimeFormats/${locale}`);
   return { key: locale, file };
 });
+const pluralPromises = Object.keys(languages).map(async ( lang ) => {
+  const { default: file } = await import(`@/locales/pluralizationRules/${lang}`);
+  return { key: lang, file };
+});
+const numberFormatPromises = locales.map(async ( { locale } ) => {
+  const { default: file } = await import(`@/locales/numberFormats/${locale}`);
+  return { key: locale, file };
+});
 const i18nConfig = [
   Promise.all(dateTimeFormatsPromises),
   Promise.all(messagesPromises),
+  Promise.all(pluralPromises),
+  Promise.all(numberFormatPromises),
 ];
 const i18n = Promise.all(i18nConfig).then((res) => {
-  const [dateTimeFormats, messages] = res;
+  const [dateTimeFormats, messages, pluralizationRules, numberFormats] = res;
   return new VueI18n({
     locale: "ko",
     fallbackLocale: "en",
@@ -44,6 +54,14 @@ const i18n = Promise.all(i18nConfig).then((res) => {
       {}
     ),
     dateTimeFormats: dateTimeFormats.reduce(
+      (acc, { key, file }) => ({ ...acc, [key]: file }),
+      {}
+    ),
+    pluralizationRules: pluralizationRules.reduce(
+      (acc, { key, file }) => ({ ...acc, [key]: file }),
+      {}
+    ),
+    numberFormats: numberFormats.reduce(
       (acc, { key, file }) => ({ ...acc, [key]: file }),
       {}
     ),

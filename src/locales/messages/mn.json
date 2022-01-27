@@ -1,3 +1,6 @@
 {
-  "hello": "Сайн уу"
+  "hello": "Сайн уу",
+  "amount": "дүн",
+  "unitPrice": "нэгжийн үнэ",
+  "bananaAmount": "{amount} гадил"
 }

@@ -15,9 +15,7 @@
     </p>
     <p>
       Time:
-      <span :class="{ rtl: isArabic }" :dir="attrDir"
-        >{{ $d(new Date(), "Time", curLocale) }}
-      </span>
+      <span :dir="attrDir">{{ $d(new Date(), "Time", curLocale) }} </span>
     </p>
     <p class="date-time">
       DateTime:

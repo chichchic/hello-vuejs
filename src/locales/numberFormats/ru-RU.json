@@ -1,0 +1,10 @@
+{
+  "currency": {
+    "style": "currency",
+    "currency": "RUB",
+    "currencyDisplay": "symbol"
+  },
+  "number": {
+    "maximumSignificantDigits": 3
+  }
+}

@@ -1,3 +1,6 @@
 {
-  "hello": "مرحبا"
+  "hello": "مرحبا",
+  "amount": "مقدار",
+  "unitPrice": "нэгжийн үнэ",
+  "bananaAmount": "{amount} موز | {amount} موزة | {amount} موز"
 }

@@ -1,3 +1,6 @@
 {
-  "hello": "안녕하세요"
+  "hello": "안녕하세요",
+  "amount": "수량",
+  "unitPrice": "개당 가격",
+  "bananaAmount": "바나나 {amount}개"
 }
