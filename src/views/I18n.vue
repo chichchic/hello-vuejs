@@ -6,7 +6,7 @@
         <button
           :class="{ selected: locale === lang }"
           v-for="{ lang, langName } in languages"
-          @click="changeLang(lang)"
+          @click="set_lang(lang)"
         >
           {{ langName }}
         </button>
@@ -16,6 +16,8 @@
   </section>
 </template>
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   name: "I18n",
   computed: {
@@ -30,9 +32,7 @@ export default {
     },
   },
   methods: {
-    changeLang(lang) {
-      this.$i18n.locale = lang;
-    },
+    ...mapMutations(["set_lang"]),
   },
 };
 </script>

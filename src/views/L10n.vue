@@ -36,6 +36,7 @@
 </template>
 <script>
 import { extractNonNumber } from "@/plugins/extractString";
+import { mapMutations } from "vuex";
 
 export default {
   data: () => ({
@@ -55,15 +56,18 @@ export default {
     },
   },
   watch: {
-    curLocale(newVal) {
-      this.$i18n.locale = newVal.slice(0, 2);
+    curLocale: {
+      handler: function (newVal, oldVal) {
+        this.set_lang(newVal.slice(0, 2));
+      },
+      immediate: true,
     },
   },
   methods: {
     changeLocale(locale) {
       this.curLocale = locale;
-      console.log(this.$tc);
     },
+    ...mapMutations(["set_lang"]),
   },
 };
 </script>
