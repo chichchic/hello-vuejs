@@ -11,11 +11,11 @@
         {{ localeName }}
       </button>
     </section>
-    <div class="input--context">
+    <div class="input-wrapper">
       <label for="amount"> {{ $t("amount") }}: </label>
       <input id="amount" type="number" v-model="amount" min="0" />
     </div>
-    <div class="input--context">
+    <div class="input-wrapper">
       <label for="unit-price"> {{ $t("unitPrice") }}: </label>
       <input id="unit-price" type="number" v-model="unitPrice" min="0" />
       {{ currencySymbol }}
@@ -74,7 +74,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .l10n {
-  .input--context {
+  .input-wrapper {
     font-size: 2rem;
     margin-bottom: 1rem;
     input {
