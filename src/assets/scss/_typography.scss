@@ -1,0 +1,45 @@
+//********************
+//FONT Type
+//********************
+.font-light {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",
+    "Microsoft Sans Serif", sans-serif;
+  font-weight: 300; //light
+}
+
+.font-regular {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",
+    "Microsoft Sans Serif", sans-serif;
+  font-weight: 400; //normal
+}
+
+.font-semi-bold {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI",
+    "Microsoft Sans Serif", sans-serif;
+  font-weight: 600; //semi-bold
+}
+
+//********************
+//Line Height
+//********************
+$lineHeights: "h-line-1-1" 1.1, "h-line-1-2" 1.2, "h-line-1-3" 1.3,
+  "h-line-1-4" 1.4, "h-line-1-5" 1.5, "h-line-1-6" 1.6, "h-line-1-7" 1.7,
+  "h-line-1-8" 1.8;
+
+@each $name, $size in $lineHeights {
+  .#{$name} {
+    line-height: $size;
+  }
+}
+
+// @each $name, $size in $lineHeights {
+//   .#{$name}:lang(ru) {
+//     line-height: $size - 0.1;
+//   }
+// }
+
+// @each $name, $size in $lineHeights {
+//   .#{$name}:lang(mn) {
+//     line-height: $size - 0.1;
+//   }
+// }
