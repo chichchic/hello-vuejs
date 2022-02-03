@@ -5,6 +5,7 @@
       <button
         :class="{ selected: locale === curLocale }"
         v-for="{ locale, localeName } in $locales"
+        :key="locale"
         @click="changeLocale(locale)"
       >
         {{ localeName }}

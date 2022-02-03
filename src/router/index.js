@@ -1,20 +1,20 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import routes from './routes'
-import nullGuard from '@/middlewares/nullGuard'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import routes from "./routes";
+import nullGuard from "@/middlewares/nullGuard";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-const router = Promise.all(routes).then(routes => {
+const router = Promise.all(routes).then((routes) => {
   const vRouter = new VueRouter({
-    mode: 'history',
+    mode: "history",
     base: process.env.BASE_URL,
-    routes
-  })
+    routes,
+  });
   vRouter.beforeEach((to, from, next) => {
-    nullGuard({to, from}, next, next.bind(null, {name: 'DateTime'}))
-  })
-  return vRouter
-})
+    nullGuard({ to, from }, next, next.bind(null, { name: "DateTime" }));
+  });
+  return vRouter;
+});
 
-export default router
+export default router;

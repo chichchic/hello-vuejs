@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 
-import { extractFiles, keyFileReducer } from './util';
+import { extractFiles, keyFileReducer } from "./util";
 Vue.use(VueI18n);
 const languages = {
   ko: "한국어",
@@ -25,10 +25,19 @@ const locales = [
 Vue.prototype.$locales = locales;
 Vue.prototype.$languages = languages;
 
-const messagesPromises = extractFiles(Object.keys(languages), 'messages');
-const dateTimeFormatsPromises = extractFiles(locales.map(v => v.locale), 'dateTimeFormats');
-const pluralPromises = extractFiles(Object.keys(languages), 'pluralizationRules');
-const numberFormatPromises = extractFiles(locales.map(v => v.locale), 'numberFormats');
+const messagesPromises = extractFiles(Object.keys(languages), "messages");
+const dateTimeFormatsPromises = extractFiles(
+  locales.map((v) => v.locale),
+  "dateTimeFormats"
+);
+const pluralPromises = extractFiles(
+  Object.keys(languages),
+  "pluralizationRules"
+);
+const numberFormatPromises = extractFiles(
+  locales.map((v) => v.locale),
+  "numberFormats"
+);
 
 const i18nConfig = [
   Promise.all(dateTimeFormatsPromises),
@@ -44,7 +53,7 @@ const i18n = Promise.all(i18nConfig).then((res) => {
     messages: keyFileReducer(messages),
     dateTimeFormats: keyFileReducer(dateTimeFormats),
     pluralizationRules: keyFileReducer(pluralizationRules),
-    numberFormats: keyFileReducer(numberFormats)
+    numberFormats: keyFileReducer(numberFormats),
   });
 });
 

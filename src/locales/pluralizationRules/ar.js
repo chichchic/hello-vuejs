@@ -11,4 +11,4 @@ export default function (choice, choicesLength) {
     return Math.min(4, choicesLength - 1);
   }
   return Math.min(5, choicesLength - 1);
-};
+}

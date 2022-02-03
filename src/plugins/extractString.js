@@ -3,4 +3,4 @@ function extractNonNumber(str) {
   return str.match(/[^0-9,^\u066B^\u066C^\u0660-\u0669]+/g);
 }
 
-export { extractNonNumber }
+export { extractNonNumber };

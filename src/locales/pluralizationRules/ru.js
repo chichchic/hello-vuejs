@@ -8,7 +8,7 @@ export default function (choice, choicesLength) {
   const endsWithOne = choice % 10 === 1;
 
   if (choicesLength < 4) {
-    return (!teen && endsWithOne) ? 1 : 2;
+    return !teen && endsWithOne ? 1 : 2;
   }
   if (!teen && endsWithOne) {
     return 1;
@@ -17,5 +17,5 @@ export default function (choice, choicesLength) {
     return 2;
   }
 
-  return (choicesLength < 4) ? 2 : 3;
-};
+  return choicesLength < 4 ? 2 : 3;
+}

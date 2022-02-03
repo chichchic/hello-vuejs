@@ -6,6 +6,7 @@
         <button
           :class="{ selected: locale === lang }"
           v-for="{ lang, langName } in languages"
+          :key="lang"
           @click="set_lang(lang)"
         >
           {{ langName }}

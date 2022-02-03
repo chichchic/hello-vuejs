@@ -15,8 +15,6 @@ const commonStore = {
   actions: {},
 };
 
-
-
 const stores = Promise.all(modules).then(
   (modules) =>
     new Vuex.Store({

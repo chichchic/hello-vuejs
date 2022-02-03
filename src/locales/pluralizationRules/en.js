@@ -4,4 +4,4 @@ export default function (choice, choicesLength) {
     return 1;
   }
   return 0;
-};
+}
