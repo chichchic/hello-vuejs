@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 
-import { extractFiles, keyFileReducer } from "../plugins/localeFile";
+import { extractFiles, keyFileReducer } from "../plugins/settingUtill";
 Vue.use(VueI18n);
 const languages = {
   ko: "한국어",
