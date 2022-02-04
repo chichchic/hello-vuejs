@@ -1,7 +1,11 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
 
-import { extractFiles, keyFileReducer } from "../plugins/settingUtill";
+import {
+  extractFiles,
+  keyFileReducer,
+  getUserLocale,
+} from "../plugins/settingUtill";
 Vue.use(VueI18n);
 const languages = {
   ko: "한국어",
@@ -45,10 +49,14 @@ const i18nConfig = [
   Promise.all(pluralPromises),
   Promise.all(numberFormatPromises),
 ];
+
+//NOTE: html lang 속성 초기 설정
+document.querySelector("html").lang = getUserLocale().lang;
+
 const i18n = Promise.all(i18nConfig).then((res) => {
   const [dateTimeFormats, messages, pluralizationRules, numberFormats] = res;
   return new VueI18n({
-    locale: "ko",
+    locale: getUserLocale().lang,
     fallbackLocale: "en",
     messages: keyFileReducer(messages),
     dateTimeFormats: keyFileReducer(dateTimeFormats),

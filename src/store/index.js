@@ -1,15 +1,23 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import modules from "./modules";
+import { getUserLocale } from "@/plugins/settingUtill";
 Vue.use(Vuex);
 
 const commonStore = {
   state: {
-    lang: "en",
+    lang: getUserLocale().lang,
+    locale: getUserLocale().locale,
   },
   mutations: {
     set_lang(state, lang) {
       state.lang = lang;
+      document.querySelector("html").lang = lang;
+      localStorage.setItem("hello-vuejs-lang", lang);
+    },
+    set_locale(state, locale) {
+      state.locale = locale;
+      localStorage.setItem("hello-vuejs-locale", locale);
     },
   },
   actions: {},

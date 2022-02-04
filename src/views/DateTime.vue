@@ -4,51 +4,49 @@
     <section class="control">
       <button
         :class="{ selected: locale === curLocale }"
-        v-for="{ locale, localeName } in $locales"
-        :key="locale"
-        @click="changeLocale(locale)"
+        v-for="{ locale: curLocale, localeName } in $locales"
+        :key="curLocale"
+        @click="set_locale(curLocale)"
       >
         {{ localeName }}
       </button>
     </section>
     <p>
-      Date: <span>{{ $d(new Date(), "Date", curLocale) }} </span>
+      Date: <span>{{ $d(new Date(), "Date", locale) }} </span>
     </p>
     <p>
       Time:
-      <span :dir="attrDir">{{ $d(new Date(), "Time", curLocale) }} </span>
+      <span :dir="attrDir">{{ $d(new Date(), "Time", locale) }} </span>
     </p>
     <p class="date-time">
       DateTime:
       <span :class="{ arabic: isArabic }">
         <span :dir="attrDir">
-          {{ $d(new Date(), "Date", curLocale) }}
+          {{ $d(new Date(), "Date", locale) }}
         </span>
         <span v-if="!isArabic">,&nbsp;</span>
         <span v-else>&nbsp;</span>
-        <span :dir="attrDir">{{ $d(new Date(), "Time", curLocale) }}</span>
+        <span :dir="attrDir">{{ $d(new Date(), "Time", locale) }}</span>
       </span>
     </p>
   </section>
 </template>
 <script>
+import { mapMutations, mapState } from "vuex";
+
 export default {
   name: "DateTime",
   computed: {
+    ...mapState(["locale"]),
     isArabic() {
-      return this.curLocale.slice(0, 2) === "ar";
+      return this.locale.slice(0, 2) === "ar";
     },
     attrDir() {
       return this.isArabic ? "rtl" : "ltr";
     },
   },
-  data: () => ({
-    curLocale: "ko-KR",
-  }),
   methods: {
-    changeLocale(locale) {
-      this.curLocale = locale;
-    },
+    ...mapMutations(["set_locale"]),
   },
 };
 </script>

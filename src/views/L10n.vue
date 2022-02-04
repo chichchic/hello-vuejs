@@ -3,10 +3,10 @@
     <h1>Localization</h1>
     <section class="control">
       <button
-        :class="{ selected: locale === curLocale }"
-        v-for="{ locale, localeName } in $locales"
-        :key="locale"
-        @click="changeLocale(locale)"
+        v-for="{ locale: curLocale, localeName } in $locales"
+        :class="{ selected: curLocale === locale }"
+        :key="curLocale"
+        @click="set_locale(curLocale)"
       >
         {{ localeName }}
       </button>
@@ -24,51 +24,40 @@
       <span
         >{{
           $tc("bananaAmount", amount, {
-            amount: $n(amount, "number", curLocale),
+            amount: $n(amount, "number", locale),
           })
         }}
       </span>
       <span>,</span>&nbsp;
       <span>
-        {{ $n(unitPrice * amount, "currency", curLocale) }}
+        {{ $n(unitPrice * amount, "currency", locale) }}
       </span>
     </p>
   </section>
 </template>
 <script>
 import { extractNonNumber } from "@/plugins/extractString";
-import { mapMutations } from "vuex";
+import { mapMutations, mapState } from "vuex";
 
 export default {
   data: () => ({
-    curLocale: "ko-KR",
     amount: 1,
     unitPrice: 3000,
   }),
   computed: {
+    ...mapState(["locale"]),
     isArabic() {
-      return this.curLocale.slice(0, 2) === "ar";
+      return this.locale.slice(0, 2) === "ar";
     },
     attrDir() {
       return this.isArabic ? "rtl" : "ltr";
     },
     currencySymbol() {
-      return extractNonNumber(this.$n(null, "currency", this.curLocale))[0];
-    },
-  },
-  watch: {
-    curLocale: {
-      handler: function (newVal, oldVal) {
-        this.set_lang(newVal.slice(0, 2));
-      },
-      immediate: true,
+      return extractNonNumber(this.$n(null, "currency", this.locale))[0];
     },
   },
   methods: {
-    changeLocale(locale) {
-      this.curLocale = locale;
-    },
-    ...mapMutations(["set_lang"]),
+    ...mapMutations(["set_lang", "set_locale"]),
   },
 };
 </script>

@@ -14,4 +14,17 @@ function keyFileReducer(fileObjects) {
   );
 }
 
-export { extractFiles, keyFileReducer };
+function getUserLocale() {
+  const locale =
+    localStorage.getItem("hello-vuejs-locale") || navigator.language || "en-US";
+  const lang =
+    localStorage.getItem("hello-vuejs-lang") ||
+    navigator.language.slice(0, 2) ||
+    "en";
+  return {
+    locale,
+    lang,
+  };
+}
+
+export { extractFiles, keyFileReducer, getUserLocale };
