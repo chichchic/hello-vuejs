@@ -20,7 +20,12 @@ const commonStore = {
       localStorage.setItem("hello-vuejs-locale", locale);
     },
   },
-  actions: {},
+  actions: {
+    set_preference({ commit }, { lang, locale }) {
+      lang && commit("set_lang", lang);
+      locale && commit("set_locale", locale);
+    },
+  },
 };
 
 const stores = Promise.all(modules).then(
