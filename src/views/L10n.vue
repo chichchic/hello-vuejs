@@ -6,7 +6,9 @@
         v-for="{ locale: curLocale, localeName } in $locales"
         :class="{ selected: curLocale === locale }"
         :key="curLocale"
-        @click="set_locale(curLocale)"
+        @click="
+          set_preference({ locale: curLocale, lang: curLocale.slice(0, 2) })
+        "
       >
         {{ localeName }}
       </button>
@@ -37,7 +39,7 @@
 </template>
 <script>
 import { extractNonNumber } from "@/plugins/extractString";
-import { mapMutations, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   data: () => ({
@@ -57,7 +59,10 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["set_lang", "set_locale"]),
+    ...mapActions(["set_preference"]),
+  },
+  mounted() {
+    this.set_preference({ lang: this.locale.slice(0, 2) });
   },
 };
 </script>
