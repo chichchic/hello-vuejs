@@ -14,17 +14,17 @@ import VueAnalytics from "vue-analytics";
 import VueUploadComponent from "vue-upload-component";
 import VueYoutube from "vue-youtube";
 import VueScrollPicker from "vue-scroll-picker";
+import _ from "underscore";
 
 import Vue from "vue";
 import App from "@/App.vue";
 
-import { langWatcherPlugin } from '@/plugins/vuexPlugins';
+import { langWatcherPlugin } from "@/plugins/vuexPlugins";
 
 Vue.component("file-upload", VueUploadComponent);
 Vue.component(VueCountdown.name, VueCountdown);
 Vue.use(VueScrollPicker);
-
-
+Vue.prototype.$_ = _;
 
 const init = async () => {
   const routerModule = await import("@/router");
