@@ -23,10 +23,10 @@ export default {
   name: "I18n",
   computed: {
     languages() {
-      return Object.keys(this.$languages).map((key) => ({
-        lang: key,
-        langName: this.$languages[key],
-      }));
+      const selection = this.$locales.map((v) =>
+        this.$_.pick(v, "lang", "langName")
+      );
+      return this.$_.uniq(selection, (x) => x.lang);
     },
     locale() {
       return this.$i18n.locale;

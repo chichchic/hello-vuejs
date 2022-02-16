@@ -3,12 +3,10 @@
     <h1>Localization</h1>
     <section class="control">
       <button
-        v-for="{ locale: curLocale, localeName } in $locales"
+        v-for="{ locale: curLocale, localeName, lang } in $locales"
         :class="{ selected: curLocale === locale }"
         :key="curLocale"
-        @click="
-          set_preference({ locale: curLocale, lang: curLocale.slice(0, 2) })
-        "
+        @click="set_preference({ locale: curLocale, lang })"
       >
         {{ localeName }}
       </button>
@@ -47,9 +45,9 @@ export default {
     unitPrice: 3000,
   }),
   computed: {
-    ...mapState(["locale"]),
+    ...mapState(["locale", "lang"]),
     isArabic() {
-      return this.locale.slice(0, 2) === "ar";
+      return this.lang === "ar";
     },
     attrDir() {
       return this.isArabic ? "rtl" : "ltr";

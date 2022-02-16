@@ -37,9 +37,9 @@ import { mapMutations, mapState } from "vuex";
 export default {
   name: "DateTime",
   computed: {
-    ...mapState(["locale"]),
+    ...mapState(["locale", "lang"]),
     isArabic() {
-      return this.locale.slice(0, 2) === "ar";
+      return this.lang === "ar";
     },
     attrDir() {
       return this.isArabic ? "rtl" : "ltr";

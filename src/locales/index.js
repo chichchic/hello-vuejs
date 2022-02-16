@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
+import _ from "underscore";
 
 import {
   extractFiles,
@@ -7,39 +8,57 @@ import {
   getUserLocale,
 } from "../plugins/settingUtill";
 Vue.use(VueI18n);
-const languages = {
-  ko: "한국어",
-  ar: "العربية",
-  en: "English",
-  mn: "Монгол",
-  ru: "русский",
-};
 const locales = [
-  { localeName: "the Republic of Korea", locale: "ko-KR" },
-  { localeName: "United Arab Emirates", locale: "ar-AE" },
-  { localeName: "Saudi Arabia", locale: "ar-SA" },
-  { localeName: "The United States of America", locale: "en-US" },
+  {
+    localeName: "the Republic of Korea",
+    langName: "한국어",
+    lang: "ko",
+    locale: "ko-KR",
+  },
+  {
+    localeName: "United Arab Emirates",
+    langName: "العربية",
+    lang: "ar",
+    locale: "ar-AE",
+  },
+  {
+    localeName: "Saudi Arabia",
+    langName: "العربية",
+    lang: "ar",
+    locale: "ar-SA",
+  },
+  {
+    localeName: "The United States of America",
+    langName: "English",
+    lang: "en",
+    locale: "en-US",
+  },
   {
     localeName: "The United Kingdom of Great Britain and Northern Ireland",
+    langName: "English",
+    lang: "en",
     locale: "en-GB",
   },
-  { localeName: "Mongolia", locale: "mn-MN" },
-  { localeName: "The Russian Federation", locale: "ru-RU" },
+  { localeName: "Mongolia", langName: "Монгол", lang: "mn", locale: "mn-MN" },
+  {
+    localeName: "The Russian Federation",
+    langName: "русский",
+    lang: "ru",
+    locale: "ru-RU",
+  },
 ];
 Vue.prototype.$locales = locales;
-Vue.prototype.$languages = languages;
-
-const messagesPromises = extractFiles(Object.keys(languages), "messages");
+const messagesPromises = extractFiles(_.pluck(locales, "lang"), "messages");
 const dateTimeFormatsPromises = extractFiles(
-  locales.map((v) => v.locale),
+  _.pluck(locales, "locale"),
   "dateTimeFormats"
 );
 const pluralPromises = extractFiles(
-  Object.keys(languages),
+  _.pluck(locales, "lang"),
   "pluralizationRules"
 );
 const numberFormatPromises = extractFiles(
-  locales.map((v) => v.locale),
+  _.pluck(locales, "locale"),
   "numberFormats"
 );
 
