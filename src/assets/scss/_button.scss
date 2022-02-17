@@ -3,9 +3,6 @@ button {
   &:hover {
     background-color: rgba($primary-text-color, 0.5);
   }
-  &:not(:last-child) {
-    margin-right: 1rem;
-  }
   &.selected {
     background-color: $primary-text-color;
     color: white;

@@ -67,6 +67,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .l10n {
+  .control {
+    button:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
   .input-wrapper {
     font-size: 2rem;
     margin-bottom: 1rem;

@@ -39,6 +39,11 @@ export default {
 </script>
 <style lang="scss" scoped>
 .i18n {
+  .control {
+    button:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
   .Internationalization {
     margin: 3rem 0;
   }

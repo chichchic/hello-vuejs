@@ -51,22 +51,25 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.i18n {
-  .dateTime {
-    p {
+.date-time {
+  .control {
+    button:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  p {
+    display: flex;
+    width: 40rem;
+    margin: 0 auto;
+    span > span {
+      display: inline-block;
+    }
+    span.arabic {
       display: flex;
-      width: 40rem;
-      margin: 0 auto;
-      span > span {
-        display: inline-block;
-      }
-      span.arabic {
-        display: flex;
-        flex-direction: row-reverse;
-      }
-      span:first-child {
-        margin-left: auto;
-      }
+      flex-direction: row-reverse;
+    }
+    span:first-child {
+      margin-left: auto;
     }
   }
 }
