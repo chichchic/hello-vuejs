@@ -4,9 +4,9 @@
     <section class="control">
       <button
         :class="{ selected: locale === curLocale }"
-        v-for="{ locale: curLocale, localeName } in $locales"
+        v-for="{ locale: curLocale, localeName, lang } in $locales"
         :key="curLocale"
-        @click="set_locale(curLocale)"
+        @click="set_preference({ locale: curLocale, lang })"
       >
         {{ localeName }}
       </button>
@@ -32,7 +32,7 @@
   </section>
 </template>
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default {
   name: "DateTime",
@@ -46,7 +46,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(["set_locale"]),
+    ...mapActions(["set_preference"]),
   },
 };
 </script>
