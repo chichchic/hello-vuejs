@@ -40,6 +40,7 @@ import { extractNonNumber } from "@/plugins/extractString";
 import { mapActions, mapState } from "vuex";
 
 export default {
+  name: "L10n",
   data: () => ({
     amount: 1,
     unitPrice: 3000,
