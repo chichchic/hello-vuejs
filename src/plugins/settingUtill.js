@@ -15,11 +15,11 @@ function keyFileReducer(fileObjects) {
 }
 
 function getUserLocale() {
+  console.log(navigator.userAgent)
   const locale =
-    localStorage.getItem("hello-vuejs-locale") || navigator.language || "en-US";
+    localStorage.getItem("hello-vuejs-locale") || "en-US";
   const lang =
     localStorage.getItem("hello-vuejs-lang") ||
-    navigator.language.slice(0, 2) ||
     "en";
   return {
     locale,
