@@ -114,6 +114,18 @@ This statement is used for testing.</textarea
 <script>
 export default {
   name: "RTLCSSExamples",
+  mounted() {
+    this.addStyleSheet("app.rtl.css");
+  },
+  methods: {
+    addStyleSheet(path) {
+      let link = document.createElement("link");
+      link.setAttribute("rel", "stylesheet");
+      link.type = "text/css";
+      link.href = "/css/" + path;
+      document.head.appendChild(link);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

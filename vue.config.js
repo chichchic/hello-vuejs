@@ -8,7 +8,7 @@ module.exports = {
       },
     },
     extract: {
-      filename: "css/[name].[hash].css",
+      filename: "css/[name].css",
       chunkFilename: "css/[name].[hash].css",
     },
   },
