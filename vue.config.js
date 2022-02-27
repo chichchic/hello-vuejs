@@ -15,9 +15,10 @@ module.exports = {
   configureWebpack: {
     plugins: [
       new WebpackRTLPlugin(),
-        prependData: `@import "@/assets/scss/index.scss";`
-      }
-    }
+      //https://hodolman.com/24
+      new webpack.optimize.LimitChunkCountPlugin({
+        maxChunks: 1,
+      }),
     ],
   },
   chainWebpack: (config) => {
