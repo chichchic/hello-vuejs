@@ -136,6 +136,7 @@ export default {
     background-color: $primary-color;
   }
 }
+/*!rtl:begin:rename*/
 .ltr-wrapper {
   direction: ltr;
   ul,
@@ -152,6 +153,7 @@ export default {
     }
   }
 }
+/*!rtl:end:rename*/
 .bullet-list {
 }
 .number-list {
