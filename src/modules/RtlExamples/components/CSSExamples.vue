@@ -140,6 +140,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+/*!rtl:begin:ignore*/
 .css-examples {
   * {
     unicode-bidi: inherit;
@@ -241,4 +242,5 @@ export default {
 }
 .textarea-wrapper {
 }
+/*!rtl:end:ignore*/
 </style>

@@ -15,6 +15,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+/*!rtl:begin:ignore*/
 .rtl-examples {
   display: flex;
   justify-content: center;
@@ -26,4 +27,5 @@ export default {
     }
   }
 }
+/*!rtl:end:ignore*/
 </style>

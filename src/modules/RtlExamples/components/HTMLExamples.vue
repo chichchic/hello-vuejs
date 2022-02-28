@@ -129,6 +129,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+/*!rtl:begin:ignore*/
 .html-examples {
   header {
     padding: 0.5rem 0;
@@ -219,4 +220,5 @@ export default {
 }
 .textarea-wrapper {
 }
+/*!rtl:end:ignore*/
 </style>

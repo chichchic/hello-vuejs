@@ -117,6 +117,12 @@ export default {
   mounted() {
     this.addStyleSheet("app.rtl.css");
   },
+  destroyed() {
+    document
+      .querySelectorAll("link[rel=stylesheet]")
+      .forEach((e) => e.parentNode.removeChild(e));
+    this.addStyleSheet("app.css");
+  },
   methods: {
     addStyleSheet(path) {
       let link = document.createElement("link");
@@ -148,24 +154,26 @@ export default {
     background-color: $primary-color;
   }
 }
-/*!rtl:begin:rename*/
+/*!rtl:rename*/
 .ltr-wrapper {
   direction: ltr;
+  /*!rtl:rename*/
   ul,
   ol {
-    padding-left: 5rem;
+    padding-left: 2rem;
   }
+  /*!rtl:rename*/
   &:not(:last-child) {
-    border-right: 2px solid $default-line-color;
+    border-right: 1px solid $default-line-color;
   }
+
   & > * {
-    padding: 1.45rem;
+    padding: 1rem;
     &:not(:last-child) {
-      border-bottom: 2px solid $default-line-color;
+      border-bottom: 1px solid $default-line-color;
     }
   }
 }
-/*!rtl:end:rename*/
 .bullet-list {
 }
 .number-list {

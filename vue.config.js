@@ -14,7 +14,22 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
-      new WebpackRTLPlugin(),
+      new WebpackRTLPlugin({
+        diffOnly: true,
+        options: {
+          autoRename: true,
+          stringMap: [
+            {
+              name: "ltr-rtl",
+              search: "ltr",
+              replace: "rtl",
+              options: {
+                scope: "*",
+              },
+            },
+          ],
+        },
+      }),
       //https://hodolman.com/24
       new webpack.optimize.LimitChunkCountPlugin({
         maxChunks: 1,
